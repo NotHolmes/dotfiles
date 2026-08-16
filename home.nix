@@ -42,6 +42,21 @@ in
       cc = "claude --dangerously-skip-permissions";
       co = "codex --full-auto";
 
+      # git
+      gst = "git status --short -b";
+      ga = "git add";
+      gb = "git branch";
+      gba = "git branch --all";
+      gco = "git checkout";
+      gc = "git commit";
+      gf = "git fetch";
+      gfa = "git fetch --all --tags --prune";
+      glog = "git log --all --decorate --oneline --graph";
+      gp = "git push";
+      gpl = "git pull";
+      grs = "git restore";
+      grst = "git restore --staged";
+
       # eza
       ls = "eza --group-directories-first --icons=auto --color=auto";
       # long views
