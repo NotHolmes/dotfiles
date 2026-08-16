@@ -18,6 +18,10 @@ in
     neovim
     # the font everything renders in
     nerd-fonts.hack
+    zoxide
+    eza
+    bat
+    yazi
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
@@ -37,6 +41,21 @@ in
       m = "git switch main";
       cc = "claude --dangerously-skip-permissions";
       co = "codex --full-auto";
+
+      # eza
+      ls = "eza --group-directories-first --icons=auto --color=auto";
+      # long views
+      l = "eza -blF --git --header --group-directories-first --icons=auto --color=auto";
+      ll = "eza -la --git --header --octal-permissions --group-directories-first --icons=auto --color=auto";
+      la = "eza -la --git --header --group-directories-first --icons=auto --color=auto";
+      lm = "eza -l --git --header --sort=modified --reverse --group-directories-first --icons=auto --color=auto";
+      # compact and specialist views
+      l1 = "eza --oneline --group-directories-first --icons=auto --color=auto";
+      lt = "eza --tree --level=2 --group-directories-first --icons=auto --color=auto";
+      "l." = ''eza -a --oneline --color=never | grep -E "^\."''; 
+
+      # yazi
+      y = "yazi";
     };
   };
 
@@ -51,6 +70,21 @@ in
       };
       cmd_duration.format = "[$duration]($style) ";
     };
+  };
+
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
