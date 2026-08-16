@@ -44,12 +44,6 @@ wezterm.on('window-focus-changed', function(window)
 	window:set_config_overrides(overrides)
 end)
 
-config.status_update_interval = 1000
-
-wezterm.on('update-right-status', function(window, pane)
-  window:set_right_status('TEST')
-end)
-
 config.keys = {
   {
     key = 'd',
