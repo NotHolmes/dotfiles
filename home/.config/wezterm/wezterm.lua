@@ -1,14 +1,14 @@
-local wezterm = require("wezterm")
+local wezterm = require('wezterm')
 
 local config = wezterm.config_builder()
 
 config.color_scheme = 'duskfox'
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font('Hack Nerd Font')
 config.font_size = 15.0
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 50
 config.hide_tab_bar_if_only_one_tab = true
-config.window_decorations = "RESIZE"
+config.window_decorations = 'RESIZE'
 
 -- Dim unfocused windows so the focused one is obvious at a glance.
 local UNFOCUSED_FOREGROUND_TEXT_HSB = { hue = 1.0, saturation = 0.25, brightness = 0.45 }
@@ -25,7 +25,7 @@ local function same_text_hsb(actual, expected)
 		and actual.brightness == expected.brightness
 end
 
-wezterm.on("window-focus-changed", function(window)
+wezterm.on('window-focus-changed', function(window)
 	local overrides = window:get_config_overrides() or {}
 	local text_hsb, opacity
 	if not window:is_focused() then
@@ -43,5 +43,44 @@ wezterm.on("window-focus-changed", function(window)
 	overrides.window_background_opacity = opacity
 	window:set_config_overrides(overrides)
 end)
+
+config.status_update_interval = 1000
+
+wezterm.on('update-right-status', function(window, pane)
+  window:set_right_status('TEST')
+end)
+
+config.keys = {
+  {
+    key = 'd',
+    mods = 'CMD',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'd',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'w',
+    mods = 'CMD',
+    action = wezterm.action.CloseCurrentPane { confirm = true },
+  },
+  {
+    key = '[',
+    mods = 'CMD',
+    action = wezterm.action.ActivatePaneDirection 'Prev',
+  },
+  {
+    key = ']',
+    mods = 'CMD',
+    action = wezterm.action.ActivatePaneDirection 'Next',
+  },
+  {
+    key = 'Enter',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.TogglePaneZoomState,
+  },
+}
 
 return config
