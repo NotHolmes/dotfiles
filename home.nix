@@ -23,6 +23,8 @@ in
     bat
     yazi
     git-open
+    tree-sitter
+    basedpyright
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
