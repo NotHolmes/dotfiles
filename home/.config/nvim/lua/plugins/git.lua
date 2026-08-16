@@ -7,7 +7,24 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     event = 'BufWinEnter',
-    opts = { current_line_blame = true },  -- who last touched this line
-  },
+    opts = { 
+      current_line_blame = true,-- who last touched this line
+    },
+    keys = {
+      {
+        '<leader>hi',
+        function()
+          require('gitsigns').preview_hunk_inline()
+        end,
+        desc = 'Preview git hunk inline',
+      },
+      {
+        '<leader>hp',
+        function()
+          require('gitsigns').preview_hunk()
+        end,
+        desc = 'Popup diff',
+      },
+    },
+  }
 }
-
