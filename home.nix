@@ -22,6 +22,7 @@ in
     eza
     bat
     yazi
+    git-open
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
