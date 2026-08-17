@@ -16,8 +16,8 @@ in
     jq        # json on the command line
     lazygit
     neovim
-    # the font everything renders in
-    nerd-fonts.hack
+    nerd-fonts.hack # the font everything renders in
+    # holmes' setup
     zoxide
     eza
     bat
@@ -25,9 +25,14 @@ in
     git-open
     tree-sitter
     basedpyright
+    bun
   ];
   fonts.fontconfig.enable = true;
-  home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS = "true";
+    OPENCODE_ENABLE_EXA = "1";
+  };
 
   programs.zsh = {
     enable = true;
@@ -131,4 +136,10 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".config/opencode/opencode.jsonc".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/opencode.jsonc";
+  home.file.".config/opencode/tui.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/tui.json";
+  home.file.".config/opencode/oh-my-opencode-slim.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/oh-my-opencode-slim.json";
 }
