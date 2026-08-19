@@ -26,6 +26,8 @@ in
     tree-sitter
     basedpyright
     bun
+    nodejs
+    mosh
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
@@ -142,4 +144,6 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/tui.json";
   home.file.".config/opencode/oh-my-opencode-slim.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/oh-my-opencode-slim.json";
+  home.file.".config/opencode/plugins".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/plugins";
 }
