@@ -28,6 +28,7 @@ in
     bun
     nodejs
     mosh
+    cloudflared
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
