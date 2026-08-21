@@ -42,6 +42,7 @@
       "anomalyco/tap/opencode"
     ];
     casks = [
+      "arc"
       "wezterm"
       "claude-code"
       "codex"
