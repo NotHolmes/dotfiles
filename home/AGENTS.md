@@ -5,6 +5,12 @@
 - Never manually modify CHANGELOG.md files or any files that are marked as auto-generated
 - When making technical decisions, do not give much weight to development cost.
   Instead, prefer quality, simplicity, robustness, scalability, and long term maintainability.
+- Prefer KISS (Keep It Simple, Stupid). Choose the simplest solution that fully satisfies the requirements and remains robust and maintainable.
+  Add complexity only when there is a concrete requirement or demonstrated need for it.
+- Prefer straightforward, human-readable code over excessive abstraction.
+  Do not extract helper functions, methods, types, classes, utilities, modules, or layers unless they meaningfully improve readability, reuse, testability, or align with an established pattern in the codebase.
+  Keep simple logic inline when extracting it would only add indirection.
+  Avoid abstractions that exist only for hypothetical future needs.
 - For one-off or infrequent operational work, start with the simplest direct end-to-end path. Do not build wrappers, control planes, policy layers, custom verifiers, or automation unless the direct path exposes a concrete blocker or repeated need that justifies the added machinery.
 - When doing bug fixes, always start with reproducing the bug in an E2E setting as closely aligned with how an end user would experience it as possible.
   This makes sure you find the real problem so your fix will actually solve it.
