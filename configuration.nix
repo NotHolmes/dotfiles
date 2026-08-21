@@ -24,6 +24,7 @@
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
     finder.CreateDesktop = false;          # clean desktop
     trackpad.Clicking = true;              # tap to click
+    trackpad.TrackpadThreeFingerDrag = true;
   };
   nix-homebrew = {
     enable = true;
