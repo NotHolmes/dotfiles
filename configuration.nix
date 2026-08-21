@@ -44,6 +44,8 @@
     ];
     casks = [
       "arc"
+      "shottr"
+      "raycast"
       "wezterm"
       "claude-code"
       "codex"
