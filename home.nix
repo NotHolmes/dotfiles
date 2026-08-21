@@ -18,15 +18,22 @@ in
     neovim
     nerd-fonts.hack # the font everything renders in
     # holmes' setup
+    ## cli
     zoxide
     eza
     bat
     yazi
     git-open
+    ## neogit
     tree-sitter
     basedpyright
+    ## runtimes
     bun
     nodejs
+    ## dev
+    docker-client
+    colima
+    ## misc
     mosh
     cloudflared
   ];
