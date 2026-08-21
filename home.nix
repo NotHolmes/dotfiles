@@ -61,6 +61,7 @@ in
       co = "codex --full-auto";
 
       # git
+      ng = "nvim -c 'Neogit'";
       gst = "git status --short -b";
       ga = "git add";
       gb = "git branch";
