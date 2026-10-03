@@ -28,7 +28,6 @@ in
     tree-sitter
     basedpyright
     ## runtimes
-    bun
     nodejs
     ## dev
     docker-client
@@ -119,6 +118,10 @@ in
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.bun = {
+    enable = true;
   };
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.

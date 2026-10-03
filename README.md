@@ -139,7 +139,7 @@ You only run `./rebuild.sh` when you change something that isn't just a symlinke
 
 ## OpenCode and oh-my-opencode-slim
 
-Home Manager installs Bun from nixpkgs, exports the background-subagent and built-in web-search environment variables, and links the authored OpenCode files from `home/.config/opencode`. The plugin uses the OpenAI preset and Herdr for pane orchestration. Companion is intentionally disabled.
+Home Manager installs Bun from nixpkgs, exports the background-subagent and built-in web-search environment variables, and links the authored OpenCode files from `home/.config/opencode`. The plugins are `oh-my-opencode-slim` (OpenCode Go preset, Herdr for pane orchestration) and `@dietrichgebert/ponytail` (lazy-senior-dev mode). Companion is intentionally disabled.
 
 The one-time machine-local Herdr integration is installed with:
 
@@ -147,16 +147,17 @@ The one-time machine-local Herdr integration is installed with:
 herdr integration install opencode
 ```
 
-To install or update the latest upstream plugin and bundled skills, run the installer after Bun is available:
+To install or update the latest upstream plugin, run the installer after Bun is available. v3 removed the `--skills` flag: bundled skills ship in-process and update with the plugin.
 
 ```sh
 bunx oh-my-opencode-slim@latest install \
   --no-tui \
-  --skills=yes \
-  --preset=openai \
+  --preset=opencode-go \
   --background-subagents=no \
   --companion=no
 ```
+
+> On `bunx`, the installer may skip warming OpenCode's plugin cache because bun's cache layout does not match its detection check. If the plugin version does not change after an update, rebuild `~/.cache/opencode/packages/oh-my-opencode-slim@latest` directly (pin `package.json` to the target version, then run `bun install`).
 
 Authenticate and refresh the available models through OpenCode itself:
 
@@ -172,7 +173,7 @@ herdr
 opencode --port 4096
 ```
 
-The plugin and bundled skills track upstream latest versions at install and update time. Their package files, caches, generated skills, Herdr integration, and authentication state stay outside this repository. Run `./rebuild.sh` after changing the Nix package list, environment variables, or Home Manager links. After authentication, use OpenCode's `ping all agents` prompt as the end-to-end smoke check.
+The plugins and bundled skills track upstream latest versions at install and update time. Their package files, caches, bundled skills, Herdr integration, and authentication state stay outside this repository. Run `./rebuild.sh` after changing the Nix package list, environment variables, or Home Manager links. After authentication, use OpenCode's `ping all agents` prompt as the end-to-end smoke check.
 
 ## Optional Pi configuration
 
