@@ -4,6 +4,17 @@
     "oh-my-opencode-slim",
     "@dietrichgebert/ponytail"
   ],
+  "mcp": {
+    "open-design": {
+      "type": "local",
+      "command": [
+        "/etc/profiles/per-user/holmes/bin/node",
+        "/Applications/Open Design.app/Contents/Resources/app/prebundled/daemon/daemon-cli.mjs",
+        "mcp"
+      ],
+      "enabled": true
+    }
+  },
   "agent": {
     "explore": {
       "disable": true
